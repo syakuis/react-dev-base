@@ -5,64 +5,40 @@
  */
 
 const path = require('path');
-const fs = require('fs');
-const glob = require('glob');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const pkg = require('./package.json');
+let config = null;
 
 module.exports = (env) => {
+  config = config === null ? Object.assign({}, pkg.config, env) : config;
   const {
-    port, publicPath, apiPath, proxyHost, vendors, output, src, elementId,
-  } = Object.assign({}, pkg.config, env);
-
-  const application = glob.sync(`./${src}/apps/*/application.json`).reduce((result, file) => {
-    result.push(JSON.parse(fs.readFileSync(file, 'utf8')));
-    return result;
-  }, []);
+    port, publicPath, output, src, entry, filename,
+  } = config;
 
   return {
 
-    entry: {
-      main: `./${src}/index.js`,
-      vendors,
-    },
+    entry,
 
     output: {
       path: path.join(__dirname, output),
       publicPath,
-      filename: '[name].[hash].js',
-      chunkFilename: 'chunks/[name].[id].js',
+      filename: `${filename}.js`,
     },
 
     plugins: [
-      new webpack.DefinePlugin({
-        API_SERVER_PATH: JSON.stringify(apiPath),
-        APPLICATION: JSON.stringify(application),
-        ELEMENT_ID: JSON.stringify(elementId),
-      }),
-      // 소스 그대로 사용해야할 경우 소스 복사한다.
-      // new CopyWebpackPlugin([{
-      //   context: path.join(__dirname, 'node_modules/ckeditor'),
-      //   from: '**/*',
-      //   to: path.join(__dirname, `${output}/js/ckeditor`),
-      // }]),
-      new webpack.optimize.CommonsChunkPlugin({
-        names: ['commons', 'vendors'],
-        minChunks: 2,
-      }),
+      new CleanWebpackPlugin([output]),
       new ExtractTextPlugin({
-        filename: '[name].[hash].css',
+        filename: `${filename}.css`,
       }),
-      new webpack.HotModuleReplacementPlugin(),
       new HtmlWebpackPlugin({
-        chunks: ['commons', 'vendors', 'main'],
         filename: 'index.html',
         template: `${src}/index.html`,
       }),
+      new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
       rules: [
@@ -167,16 +143,6 @@ module.exports = (env) => {
       historyApiFallback: true,
       port,
       contentBase: output,
-      disableHostCheck: true,
-      host: '0.0.0.0',
-      proxy: {
-        [apiPath]: {
-          target: proxyHost,
-          pathRewrite: { [`^${apiPath}`]: '' },
-          secure: false,
-          prependPath: true,
-        },
-      },
     },
   };
 };

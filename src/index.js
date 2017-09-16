@@ -5,5 +5,5 @@ const Root = () => <div>Hello World!!!</div>;
 
 ReactDOM.render(
   <Root />,
-  document.getElementById(ELEMENT_ID),
+  document.getElementById('app'),
 );
