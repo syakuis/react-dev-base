@@ -4,7 +4,6 @@
  * @site http://syaku.tistory.com
  */
 const webpack = require('webpack');
-
 const merge = require('webpack-merge');
 
 const base = require('./webpack.base.config');
@@ -12,12 +11,14 @@ const pkg = require('./package.json');
 const { port, publicPath, dist, src, entry, filename, externals } = pkg.config;
 
 module.exports = merge(base, {
-  externals, 
+  devtool: 'cheap-module-eval-source-map',
+  entry: './src/demo/index.js',
+  output: {
+    pathinfo: true,
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-      },
+    new webpack.LoaderOptionsPlugin({
+      debug: true
     }),
   ],
 });

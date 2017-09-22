@@ -4,7 +4,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
-import style from './resources/style.css';
+import style from '../resources/style.css';
 
 const Root = () => (
   <div className="container">

@@ -9,14 +9,27 @@
 ```
 webpack 2
 webpack-dev-server 2
-babel
 
-eslint 4
-eslint airbnb config
+eslint 3
+eslint-config-airbnb
 stylelint
 
+babel
 React & ReactDOM 15
-babel-polyfill
 flow
 jest
+```
+
+### 구동
+
+npm or yarn
+
+```
+$ yarn run build:prod
+$ yarn run build:publish
+$ yarn run serv:prod
+$ yarn run serv:demo
+$ yarn run stats:prod
+
+$ yarn run jest
 ```
