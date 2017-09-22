@@ -14,6 +14,7 @@ const pkg = require('./package.json');
 const { port, publicPath, dist, src, entry, filename, externals } = pkg.config;
 
 module.exports = merge(base, config, {
+  externals, 
   plugins: [
     new CleanWebpackPlugin([dist]),
   ],

@@ -110,20 +110,20 @@ module.exports = {
     ],
   },
 
-  // resolve: {
-  //   alias: {
-  //     _resources: path.resolve(__dirname, `${src}/resources`),
-  //     _commons: path.resolve(__dirname, `${src}/commons`),
-  //     _entrypoint: path.resolve(__dirname, `${src}/entrypoint`),
-  //     _components: path.resolve(__dirname, `${src}/components`),
-  //     _layouts: path.resolve(__dirname, `${src}/layouts`),
-  //     _apps: path.resolve(__dirname, `${src}/apps`),
-  //     // _containers: path.resolve(__dirname, `${src}/containers`),
-  //     _utils: path.resolve(__dirname, `${src}/utils`),
-  //     _actions: path.resolve(__dirname, `${src}/actions`),
-  //     _reducers: path.resolve(__dirname, `${src}/reducers`),
-  //   },
-  // },
+  resolve: {
+    alias: {
+      _resources: path.resolve(__dirname, `${src}/resources`),
+      // _commons: path.resolve(__dirname, `${src}/commons`),
+      // _entrypoint: path.resolve(__dirname, `${src}/entrypoint`),
+      _components: path.resolve(__dirname, `${src}/components`),
+      // _layouts: path.resolve(__dirname, `${src}/layouts`),
+      // _apps: path.resolve(__dirname, `${src}/apps`),
+      // _containers: path.resolve(__dirname, `${src}/containers`),
+      // _utils: path.resolve(__dirname, `${src}/utils`),
+      // _actions: path.resolve(__dirname, `${src}/actions`),
+      // _reducers: path.resolve(__dirname, `${src}/reducers`),
+    },
+  },
 
   devServer: {
     port,

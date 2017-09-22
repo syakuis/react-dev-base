@@ -12,7 +12,6 @@ const pkg = require('./package.json');
 const { port, publicPath, dist, src, entry, filename, externals } = pkg.config;
 
 module.exports = merge(base, {
-  externals, 
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
