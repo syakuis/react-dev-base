@@ -16,7 +16,6 @@ stylelint
 
 babel
 React & ReactDOM 15
-flow
 jest
 ```
 
@@ -27,9 +26,18 @@ npm or yarn
 ```
 $ yarn run build:prod
 $ yarn run build:publish
-$ yarn run serv:prod
 $ yarn run serv:demo
 $ yarn run stats:prod
 
 $ yarn run jest
+```
+
+### 배포
+
+```
+$ yarn run build:publish
+$ yarn pack
+$ yarn add pack...
+
+$ yarn publish
 ```
