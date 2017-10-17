@@ -14,7 +14,7 @@ const Root = () => (
     <i className="fa fa-close" /> {process.env.NODE_ENV}
 
     <hr />
-    <Counter />
+    <Counter title="counter" />
   </div>
 );
 
