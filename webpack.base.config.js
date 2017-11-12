@@ -143,7 +143,7 @@ const base = (args) => {
       // 아래의 두 옵션으로 외부에서도 접속할 수 있게 한다.
       disableHostCheck: true,
       host: '0.0.0.0',
-      // historyApiFallback: true, // router 용 history
+      historyApiFallback: true, // router 용 history
       // backend server 와 연동할때 사용한다.
       // proxy: {
       //   [apiPath]: {
