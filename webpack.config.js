@@ -16,8 +16,8 @@ const {
 
 module.exports = merge(base(), {
   entry: {
-    [filename]: `${src}/index.js`,
-    [`${filename}.min`]: `${src}/index.js`,
+    [filename]: `./${src}/index.js`,
+    [`${filename}.min`]: `./${src}/index.js`,
   },
   externals,
   output: {
