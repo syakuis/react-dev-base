@@ -1,8 +1,6 @@
 # React 앱을 개발하기 위한 기본 개발 환경
 
-본 프로젝트는 리액트 앱 개발을 위한 기본적인 개발환경을 구성하고 있다.
-
-새로운 프로젝트마다 매번 개발환경을 구성하는 작업을 생략하기 위해 만들어졌다.
+리액트 패키지를 개발하기 위한 기본 개발 환경을 구성하고 있다.
 
 바벨 설정은 ie 11 이상으로 되어있다. 필요하다면 직접 변경하여 사용한다.
 
@@ -26,27 +24,51 @@ jest
 npm or yarn
 
 ```
-$ yarn build:prod
-$ yarn build:publish
-$ yarn serv:dev
-$ yarn serv:demo
-$ yarn stats:prod
+$ yarn build  // 배포소스 빌드
+$ yarn demo   // 데모소스 빌드
+$ yarn dev    // 개발서버 구동
 
 $ yarn jest
 ```
 
-### npm 저장소에 배포하기
+### yarn 로컬 패키지 생성 및 배포하기
 
 ```
-// 바벨로 빌드하여 최종 소스를 생성한다.
-$ yarn build:publish
+// 빌드한다.
+$ yarn build
 
-// npm 에 배포하기전에 배포 소스를 만들어 설치해본다. *.tgz
-$ yarn pack
-$ yarn add ./packName.tgz
-
-// npm 서버 패키지를 배포한다.
+// npm 서버 패키지 배포하기
 $ yarn publish
+
+// 로컬 패키지 생성하기
+$ yarn pack
+
+// 로컬 패키지 설치하기.
+$ yarn add ./packName.tgz
+```
+
+### 패키지 install
+
+```
+$ yarn add react-dev-base
+```
+
+```js
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+<script src="./dist/react-dev-base.min.js"></script>
+
+<script>
+  // python -m SimpleHTTPServer 8000
+  console.log(ReactDevBase);
+  ReactDevBase.ConsoleLog();
+</script>
+```
+
+or
+
+```js
+import ReactDevBase from 'react-dev-base';
 ```
 
 ### 개발 환경 설정 설명
@@ -69,18 +91,3 @@ import s from './style.module.css';
 충돌이 되지 않는 클래스는 그래도 사용하면 된다. `<div className="clas"></div>`
 
 webpack 설정에 `*.module.css` 에 대해 모듈로 처리되게 설정되어 있다.
-
-
-### 추천 패키지
-
-- axios: ajax request
-- qs: json to parameter type trans
-- attr-accept: mimetype check
-- classnames: css classname appender
-- file-saver: file save
-- filesize: file size
-- flatpickr: datetime picker
-- moment: date util
-- shortid: 유니크 key 생성.
-- store: local storage. cookie and session support
-- styled-components: inline style created.

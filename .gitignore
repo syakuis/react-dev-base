@@ -8,7 +8,5 @@ RUNNING_PID
 
 *.log
 *.bak
-stats.json
 
-dist/
 node_modules/

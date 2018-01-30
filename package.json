@@ -1,6 +1,6 @@
 {
   "name": "react-dev-base",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "react 개발을 위한 새로운 프로젝트에 필요한 개발 환경을 구성하였다.",
   "author": "Syaku (최석균) <http://syaku.tistory.com>",
   "license": "MIT",
@@ -28,6 +28,7 @@
   },
   "config": {
     "filename": "react-dev-base",
+    "library": "ReactDevBase",
     "publicPath": "",
     "output": "dist",
     "src": "src",
@@ -50,11 +51,9 @@
   },
   "scripts": {
     "jest": "jest",
-    "build:prod": "NODE_ENV='production' webpack --profile --colors --progress",
-    "build:publish": "NODE_ENV='production' webpack --config webpack.config.publish.js --profile --colors --progress",
-    "serv:dev": "NODE_ENV='development' webpack-dev-server --config webpack.config.dev.js --colors --progress",
-    "serv:demo": "NODE_ENV='development' webpack-dev-server --config webpack.config.demo.js --colors --progress",
-    "stats:prod": "NODE_ENV='production' webpack --config webpack.config.stats.js --colors --progress --profile --json > stats.json"
+    "build": "NODE_ENV='production' webpack --profile --colors --progress",
+    "demo": "NODE_ENV='production' webpack --config webpack.config.demo.js --profile --colors --progress",
+    "dev": "NODE_ENV='development' webpack-dev-server --config webpack.config.dev.js --colors --progress"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -87,10 +86,12 @@
     "jest": "^21.2.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "stylelint": "8.2.0",
     "stylelint-config-standard": "^17.0.0",
     "stylelint-webpack-plugin": "^0.9.0",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.1",
