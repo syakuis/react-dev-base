@@ -21,13 +21,20 @@ class Counter extends Component {
   }
 
   onClick() {
-    this.setState({ count: this.state.count + 1 });
+    const { count } = this.state;
+    this.setState({ count: count + 1 });
   }
+
   render() {
+    const { title } = this.props;
+    const { count } = this.state;
+
     return (
       <div>
-        {this.props.title}
-        <button type="button" className="btn btn-default" onClick={this.onClick}>+ {this.state.count}</button>
+        {title}
+        <button type="button" className="btn btn-default" onClick={this.onClick}>
+          {count}
+        </button>
       </div>
     );
   }

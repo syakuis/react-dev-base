@@ -3,7 +3,8 @@ import style from '../resources/style.css';
 
 const HelloWorld = () => (
   <div className="container">
-    Hello World!!! <span className={style.color}>React!!!</span>
+    Hello World!!!
+    <p className={style.color}>React!!!</p>
   </div>
 );
 

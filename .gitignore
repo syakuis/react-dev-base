@@ -1,12 +1,2 @@
-~/
-.*/
-
-*.DS_Store
-Thumbs.db
-Thumbs.db\:encryptable
-RUNNING_PID
-
-*.log
-*.bak
-
 node_modules/
+dist/

@@ -16,7 +16,4 @@ const Root = () => (
   </div>
 );
 
-ReactDOM.render(
-  <Root />,
-  document.getElementById('app'),
-);
+ReactDOM.render(<Root />, document.getElementById('app'));

@@ -1,5 +1,5 @@
-import HelloWorld, { ConsoleLog } from '_components/HelloWorld';
-import Counter from '_components/Counter';
+import HelloWorld, { ConsoleLog } from './components/HelloWorld';
+import Counter from './components/Counter';
 
 export default HelloWorld;
 export { ConsoleLog, Counter };
