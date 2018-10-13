@@ -8,9 +8,4 @@ const HelloWorld = () => (
   </div>
 );
 
-const ConsoleLog = () => {
-  console.log('Hello World!!!');
-};
-
 export default HelloWorld;
-export { ConsoleLog };

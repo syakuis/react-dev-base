@@ -28,9 +28,9 @@
   },
   "scripts": {
     "jest": "jest",
-    "build": "webpack -p --config ./build/webpack.config.prod.js",
-    "dev": "webpack -d --profile --colors --config ./build/webpack.config.dev.js",
-    "start": "webpack-dev-server -d --profile --colors --config ./build/webpack.config.dev.js"
+    "build": "webpack -p --env.production --config ./build/webpack.config.prod.js",
+    "dev": "webpack -d --env.development --config ./build/webpack.config.dev.js",
+    "start": "webpack-dev-server -d --env.development --config ./build/webpack.config.dev.js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

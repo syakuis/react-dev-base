@@ -11,7 +11,17 @@ module.exports = {
   extends: ['airbnb', 'prettier'],
   plugins: ['prettier', 'react', 'jsx-a11y', 'jest'],
   settings: {
-    'import/resolver': 'webpack',
+    // 'import/resolver': 'webpack',
+    'import/resolver': {
+      webpack: { 
+        config: './build/webpack.config.dev.js',
+      },
+    },
+    'import/resolver': {
+      webpack: { 
+        config: './build/webpack.config.prod.js',
+      },
+    },
     'import/parser': 'babel-eslint',
   },
   rules: {

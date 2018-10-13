@@ -1,12 +1,50 @@
-# React 앱을 개발하기 위한 기본 개발 환경
+# React Development Environment
 
-리액트 패키지를 개발하기 위한 기본 개발 환경을 구성하고 있다.
+## 설명
 
-바벨 설정은 ie 11 이상으로 되어있다. 필요하다면 직접 변경하여 사용한다.
+리액트 기반으로 프로그램을 개발하기 위한 기본적인 개발 환경을 구성을 제공합니다.
+바벨 설정은 ie 11 이상으로 되어있습니다.
 
-### 패키지 구동
+## 패키지 구동
 
 ```
+$ npm install
 $ npm run build  // 소스 빌드
 $ npm run start   // 서버 구동
 ```
+
+## 할일
+
+- [x] `webpack.resolve.alias` 설정을 사용하면 eslint 에서 `import/no-unresolved` 오류가 발생됨.
+  - `eslint-import-resolver-webpack` 에서 설정된 webpack.config.js 를 찾지 못해서 발생한 문제.
+  - 웹팩에서 사용한 설정 파일을 직접 넣어줘야 한다. 아니면 기본 설정 `webpack.config.js` 파일을 사용하면 된다.
+  ```js
+  // 참고 .eslintrc.js
+  settings: {
+    // 'import/resolver': 'webpack',
+    'import/resolver': {
+      webpack: { 
+        config: require.resolve('./build/webpack.config.dev.js') 
+      },
+    },
+    'import/resolver': {
+      webpack: { 
+        config: require.resolve('./build/webpack.config.prod.js') 
+      },
+    },
+    'import/parser': 'babel-eslint',
+  },
+
+  ```
+- [ ] sudo 없이 npm 접근할 수 없는 문제.
+- [ ] webpack.config.js 같은 설정에서 env. 사용하면 빌드시 오류가 발생하는 데 이유를 찾지 못했다.
+  ```js
+  // 파일 ./build/webpack.config.js
+  // 여기서 env.development 사용할 수 없었다.
+  if (development === true) {
+    return dev(env, newArgs);
+  }
+
+  return prod(env, newArgs);
+  ```
+
