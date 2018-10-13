@@ -20,16 +20,17 @@ $ npm run start   // 서버 구동
   - 웹팩에서 사용한 설정 파일을 직접 넣어줘야 한다. 아니면 기본 설정 `webpack.config.js` 파일을 사용하면 된다.
   ```js
   // 참고 .eslintrc.js
+  // 프로젝트 경로에서 시작된다. 결국 웹팩 설정 파일을 설정해주면 해결 된다.
   settings: {
     // 'import/resolver': 'webpack',
     'import/resolver': {
       webpack: { 
-        config: require.resolve('./build/webpack.config.dev.js') 
+        config: './build/webpack.config.dev.js'
       },
     },
     'import/resolver': {
       webpack: { 
-        config: require.resolve('./build/webpack.config.prod.js') 
+        config: './build/webpack.config.prod.js'
       },
     },
     'import/parser': 'babel-eslint',
