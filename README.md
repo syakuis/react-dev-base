@@ -15,6 +15,7 @@ $ npm run start   // 서버 구동
 
 ## 할일
 
+- [ ] 배포 방법 정리 및 설정 개선. es, umd 등등 
 - [x] `webpack.resolve.alias` 설정을 사용하면 eslint 에서 `import/no-unresolved` 오류가 발생됨.
   - `eslint-import-resolver-webpack` 에서 설정된 webpack.config.js 를 찾지 못해서 발생한 문제.
   - 웹팩에서 사용한 설정 파일을 직접 넣어줘야 한다. 아니면 기본 설정 `webpack.config.js` 파일을 사용하면 된다.
