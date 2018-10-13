@@ -15,6 +15,8 @@ $ npm run start   // 서버 구동
 
 ## 할일
 
+- [ ] test 환경 설정 추가하기.
+- [ ] lerna 다중 프로젝트 관리 설정 추가하기.
 - [ ] 배포 방법 정리 및 설정 개선. es, umd 등등 
 - [x] `webpack.resolve.alias` 설정을 사용하면 eslint 에서 `import/no-unresolved` 오류가 발생됨.
   - `eslint-import-resolver-webpack` 에서 설정된 webpack.config.js 를 찾지 못해서 발생한 문제.
