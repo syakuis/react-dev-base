@@ -6,19 +6,23 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-module.exports = (env, args) =>
-  merge(common(env, args), {
-    mode: 'production',
-    entry: {
-      [args.project]: './src/index.js',
-      [`${args.project}.min`]: `./src/index.js`,
+module.exports = (env, args, config) =>
+  merge(
+    common(env, args),
+    {
+      mode: 'production',
+      entry: {
+        [args.project]: './src/index.js',
+        [`${args.project}.min`]: `./src/index.js`,
+      },
+      output: {
+        libraryTarget: 'umd',
+        library: '[name]',
+      },
+      externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
     },
-    output: {
-      libraryTarget: 'umd',
-      library: '[name]',
-    },
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-    },
-  });
+    config,
+  );

@@ -9,43 +9,47 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const common = require('./webpack.common.js');
 
-module.exports = (env, args) =>
-  merge(common(env, args), {
-    mode: 'development',
-    // devtool: 'inline-source-map',
-    devtool: 'cheap-module-source-map',
-    entry: {
-      [args.project]: './src/dev.js',
-    },
-    output: {
-      pathinfo: true,
-    },
-    plugins: [
-      new webpack.LoaderOptionsPlugin({
-        debug: true,
-      }),
-      new webpack.HotModuleReplacementPlugin(),
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: path.join(__dirname, 'index.html'),
-      }),
-      new HtmlWebpackExcludeAssetsPlugin(),
-    ],
-    module: {
-      rules: [
-        {
-          test: /\.(html)$/,
-          use: {
-            loader: 'html-loader',
-            options: {
-              attrs: [':data-src'],
+module.exports = (env, args, config) =>
+  merge(
+    common(env, args),
+    {
+      mode: 'development',
+      // devtool: 'inline-source-map',
+      devtool: 'cheap-module-source-map',
+      entry: {
+        [args.project]: './src/dev.js',
+      },
+      output: {
+        pathinfo: true,
+      },
+      plugins: [
+        new webpack.LoaderOptionsPlugin({
+          debug: true,
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: path.join(__dirname, 'index.html'),
+        }),
+        new HtmlWebpackExcludeAssetsPlugin(),
+      ],
+      module: {
+        rules: [
+          {
+            test: /\.(html)$/,
+            use: {
+              loader: 'html-loader',
+              options: {
+                attrs: [':data-src'],
+              },
             },
           },
-        },
-      ],
+        ],
+      },
+      devServer: {
+        historyApiFallback: true,
+        contentBase: 'dist',
+      },
     },
-    devServer: {
-      historyApiFallback: true,
-      contentBase: 'dist',
-    },
-  });
+    config,
+  );

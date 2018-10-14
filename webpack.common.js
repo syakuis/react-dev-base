@@ -1,15 +1,17 @@
-const path = require('path'); // node.js 내장 패키지
-const webpack = require('webpack'); // node.js 내장 패키지
+const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = (env, args) => {
-  // const { appId, __dirbase } = args;
-  const { appId } = args;
-  const dirbase = __dirname;
+  const { appId, __dirbase } = args;
+
+  let dirbase = __dirbase;
+  if (!__dirbase) {
+    dirbase = __dirname;
+  }
 
   return {
-    entry: {},
     output: {
       filename: '[name].js?hash=[hash]',
       path: path.join(dirbase, 'dist'),
@@ -50,13 +52,12 @@ module.exports = (env, args) => {
           include: path.join(dirbase, 'src'),
         },
         {
-          test: /\.js$/,
+          test: /\.m?js$/,
           include: path.join(dirbase, 'src'),
           use: {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              babelrc: true,
             },
           },
         },
@@ -99,8 +100,8 @@ module.exports = (env, args) => {
 
     resolve: {
       alias: {
-        _src: path.join(dirbase, 'src'),
-        _components: path.join(dirbase, 'src/components'),
+        _src: path.resolve(dirbase, 'src'),
+        _components: path.resolve(dirbase, 'src/components'),
       },
     },
   };
