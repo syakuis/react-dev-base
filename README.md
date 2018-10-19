@@ -49,6 +49,8 @@ $ lerna bootstrap
 - stylelint  
   vscode 플러그인 : stylelint
 - lerna
+- vscode Debug
+  vscode 플러그인 : [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 
 ## 패키지 구동
 
@@ -84,6 +86,9 @@ $ lerna exec -- npm run dev
   - webpack success
   - leran success
 - [ ] jest test 구현
+- [ ] vscode Debug 환경 구현하기
+  - webpack success
+  - lerna wait
 - [ ] 다양한 패키지 배포 설정하기
 
 ## 문제점 정리

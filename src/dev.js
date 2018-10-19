@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 import HelloWorld from '_components/HelloWorld';
 import Counter from '_components/Counter';
@@ -12,6 +12,7 @@ const Root = () => (
     <HelloWorld />
     {process.env.NODE_ENV}
     <hr />
+    <i className="fas fa-cog" />
     <Counter title="counter" />
   </div>
 );

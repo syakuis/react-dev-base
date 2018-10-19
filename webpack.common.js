@@ -4,17 +4,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = (env, args) => {
-  const { appId, __dirbase } = args;
+  const { publicPath: aPublicPath, appId, __dirbase } = args;
 
-  let dirbase = __dirbase;
-  if (!__dirbase) {
-    dirbase = __dirname;
-  }
+  const dirbase = __dirbase || __dirname;
+
+  // url 로 접근할때 경로를 의미한다.
+  // 모든 publicPath 는 통일한다.
+  const publicPath = process.env.ASSET_PATH || aPublicPath || '/';
 
   return {
     output: {
       filename: '[name].js?hash=[hash]',
       path: path.join(dirbase, 'dist'),
+      publicPath,
     },
 
     plugins: [
@@ -38,7 +40,7 @@ module.exports = (env, args) => {
         // },
       }),
       new MiniCssExtractPlugin({
-        filename: '[name].css',
+        filename: '[name].css?hash=[hash]',
         chunkFilename: '[id].css',
       }),
     ],
@@ -69,7 +71,7 @@ module.exports = (env, args) => {
               options: {
                 // you can specify a publicPath here
                 // by default it use publicPath in webpackOptions.output
-                publicPath: '../',
+                publicPath,
               },
             },
             {
@@ -78,8 +80,15 @@ module.exports = (env, args) => {
           ],
         },
         {
-          test: /\.(png|jpg|gif)$/,
-          use: ['file-loader'],
+          test: /.(png|jpg|gif)(\?[a-z0-9]+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              publicPath: publicPath === '/' ? 'images/' : `${publicPath}/images/`,
+            },
+          },
         },
 
         {
@@ -90,7 +99,7 @@ module.exports = (env, args) => {
               options: {
                 name: '[name].[ext]',
                 outputPath: 'fonts/',
-                publicPath: '../',
+                publicPath: publicPath === '/' ? 'fonts/' : `${publicPath}/fonts/`,
               },
             },
           ],

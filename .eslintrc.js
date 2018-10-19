@@ -30,15 +30,22 @@ module.exports = {
       { devDependencies: true, peerDependencies: true },
     ],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
-
     'jsx-a11y/label-has-for': [
-      2,
+      'error',
       {
-        components: ['Label'],
+        // components: ['Label'],
         required: {
           some: ['nesting', 'id'],
         },
         allowChildren: true,
+      },
+    ],
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
       },
     ],
     'jsx-a11y/click-events-have-key-events': ['off'],

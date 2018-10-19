@@ -6,7 +6,7 @@
     {
       "label": "build",
       "type": "shell",
-      "command": "lerna --scope=ainframe-react exec -- npm run start",
+      "command": "lerna --scope=demo exec -- npm run start",
       "group": "build"
     }
   ]
