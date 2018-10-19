@@ -86,6 +86,8 @@ $ lerna exec -- npm run dev
   - webpack success
   - leran success
 - [ ] jest test 구현
+  - webpack success
+  - lerna wait
 - [ ] vscode Debug 환경 구현하기
   - webpack success
   - lerna wait

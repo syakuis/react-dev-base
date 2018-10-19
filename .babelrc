@@ -2,8 +2,7 @@
   "presets": [
     [
       "@babel/preset-env", {
-        "targets": { "browsers": [ "last 2 Chrome versions", "ie >= 11" ] },
-        "debug": true
+        "targets": { "browsers": [ "last 2 Chrome versions", "ie >= 11" ] }
       }
     ],
     "@babel/preset-react"
@@ -13,6 +12,7 @@
     "@babel/plugin-syntax-import-meta",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-json-strings",
-    "@babel/plugin-syntax-jsx"
+    "@babel/plugin-syntax-jsx",
+    "@babel/plugin-transform-runtime"
   ]
 }

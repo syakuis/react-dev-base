@@ -14,21 +14,9 @@
     "react"
   ],
   "main": "dist/react-dev-base.js",
-  "jest": {
-    "verbose": true,
-    "testMatch": [
-      "**/__tests__/**/*.js?(x)"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "globals": {
-      "NODE_ENV": "test"
-    }
-  },
   "scripts": {
     "eslint": "eslint",
-    "jest": "jest",
+    "test": "jest",
     "build": "webpack -p --config ./webpack.config.prod.js",
     "dev": "webpack -d --config ./webpack.config.dev.js",
     "start": "webpack-dev-server -d --config ./webpack.config.dev.js"
@@ -40,19 +28,24 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/plugin-syntax-jsx": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.1.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^21.2.0",
     "babel-loader": "^8.0.0",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.24.1",
+    "eslint-plugin-jest": "^21.25.1",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
@@ -66,11 +59,12 @@
     "lerna": "^3.4.3",
     "mini-css-extract-plugin": "^0.4.3",
     "prettier": "^1.14.3",
-    "react-test-renderer": "^16.5.2",
+    "raf": "^3.4.0",
+    "regenerator-runtime": "^0.12.1",
     "style-loader": "^0.23.1",
     "stylelint": "^9.6.0",
     "stylelint-config-standard": "^18.2.0",
-    "webpack": "^4.20.2",
+    "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
